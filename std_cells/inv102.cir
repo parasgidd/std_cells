@@ -1,0 +1,18 @@
+* C:\Users\PARAS\eSiM-Workspace\inv101\inv101.cir
+
+.lib "sky130_fd_pr/models/sky130.lib.spice" ff
+
+
+xM1  vdd in out vdd sky130_fd_pr__pfet_01v8 w=1.6 l=.15
+xM2  out in GND GND sky130_fd_pr__nfet_01v8 w=.8 l=.15
+
+
+v1 vdd 0 1.8
+v2 in 0 PULSE 0 1.8 0s 0s 0s 5ns 10ns
+
+.control
+tran 0.01ns 40ns
+plot v(in)+2 v(out)
+.endc
+
+.end
